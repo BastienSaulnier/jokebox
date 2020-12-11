@@ -38,14 +38,11 @@ export default class JokeCard extends React.Component<
     const { access_token } = this.state;
     await this.setState({ isLoadingContent: true });
     await axios
-      .get(
-        "https://cors-anywhere.herokuapp.com/https://blague.xyz/api/joke/random",
-        {
-          headers: {
-            Authorization: `${access_token}`,
-          },
-        }
-      )
+      .get("/api/joke/random", {
+        headers: {
+          Authorization: `${access_token}`,
+        },
+      })
       .then(async (response) => {
         const res = await response.data.joke;
         await this.setState({ content: res });
