@@ -1,0 +1,56 @@
+@import "../../vars.scss";
+
+.JokeCardContent {
+  padding: 3rem;
+  border: solid 2px $hard-main-color;
+  border-radius: $corner-radius;
+  box-shadow: $horizontal-box-shadow;
+  min-height: 280px;
+  margin: 100px 15px;
+  background-color: white;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+.quote {
+  border: solid 1px lightgray;
+  padding: 0.3rem;
+  border-radius: $corner-radius;
+  margin-bottom: 0.6rem;
+}
+
+.quoteWrapper {
+  min-height: 140px;
+  width: 100%;
+  :nth-child(1) {
+    margin-bottom: 20px;
+  }
+  :nth-child(2) {
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+}
+
+.button {
+  padding: 10px;
+  background-color: $light-main-color;
+  border: none;
+  border-radius: $corner-radius;
+  cursor: pointer;
+  outline: none;
+}
+.buttonWrapper {
+  width: 100%;
+  display: flex;
+  min-height: 35px;
+  :nth-child(1) {
+    margin-right: 10px;
+  }
+}
+
+.shown {
+  display: block;
+}
+.hidden {
+  display: none;
+}
