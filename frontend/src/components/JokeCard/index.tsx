@@ -70,7 +70,7 @@ export default class JokeCard extends React.Component<
     const { content, isLoadingContent, isAnswerShown } = this.state;
     return (
       <div className="JokeCard">
-        <div className="JokeCardContent center">
+        <div className="JokeCardContent">
           {isLoadingContent ? (
             <Skeleton height={30}></Skeleton>
           ) : (

@@ -15,7 +15,7 @@ export default class Home extends React.Component<IHomeProps, IHomeState> {
 
   public render() {
     return (
-      <div className="Home">
+      <div className="Home center">
         <JokeCard />
       </div>
     );
