@@ -4,7 +4,7 @@ const initState = {
   test_key: "",
 };
 
-const articles = (state = initState, action) => {
+const test = (state = initState, action) => {
   switch (action.type) {
     case testConsts.TEST_ACTION_FULFILLED:
       return { ...state, test_key: action.payload.data };
@@ -14,4 +14,4 @@ const articles = (state = initState, action) => {
   }
 };
 
-export default articles;
+export default test;
