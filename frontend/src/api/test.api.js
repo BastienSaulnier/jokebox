@@ -2,4 +2,5 @@
 
 import axios from "axios";
 
-export const testActionAPI = () => axios.get("http://localhost:4000/");
+export const testActionAPI = () =>
+  axios.get("https://jokeboxwbs.herokuapp.com/test/route");
