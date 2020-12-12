@@ -3,8 +3,14 @@ import "./index.scss";
 
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import { connect } from "react-redux";
 
-export interface IJokeCardProps {}
+import { testAction } from "../../redux/actions/test.actions";
+
+export interface IJokeCardProps {
+  testAction?: any;
+  test_key?: any;
+}
 
 export interface IJokeCardState {
   access_token?: string;
@@ -13,10 +19,7 @@ export interface IJokeCardState {
   isAnswerShown?: boolean;
 }
 
-export default class JokeCard extends React.Component<
-  IJokeCardProps,
-  IJokeCardState
-> {
+class JokeCard extends React.Component<IJokeCardProps, IJokeCardState> {
   state: {
     access_token: string;
     isLoadingContent: boolean;
@@ -74,8 +77,11 @@ export default class JokeCard extends React.Component<
 
   public render() {
     const { content, isLoadingContent, isAnswerShown } = this.state;
+    const { testAction, test_key } = this.props;
     return (
       <div className="JokeCard">
+        <button onClick={() => testAction()}>test</button>
+        <p>{test_key}</p>
         <div className="JokeCardContent">
           {isLoadingContent ? (
             <Skeleton height={30}></Skeleton>
@@ -131,3 +137,13 @@ export default class JokeCard extends React.Component<
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  test_key: state.test.test_key,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  testAction: () => dispatch(testAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(JokeCard);
