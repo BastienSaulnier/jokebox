@@ -17,13 +17,18 @@ export default class JokeCard extends React.Component<
   IJokeCardProps,
   IJokeCardState
 > {
+  state: {
+    access_token: string;
+    isLoadingContent: boolean;
+    isAnswerShown: boolean;
+    content: {};
+  };
   constructor(props: IJokeCardProps) {
     super(props);
 
     this.state = {
       access_token:
         "kBcdkPaTD-5icbjsN7j_MaIFfDo_0NABi_k5Efs-N_8u.u_i0RKzA6pOYVP4rnHo",
-
       isLoadingContent: true,
       isAnswerShown: false,
       content: {},
@@ -42,6 +47,7 @@ export default class JokeCard extends React.Component<
         "https://cors-anywhere.herokuapp.com/https://blague.xyz/api/joke/random",
         {
           headers: {
+            "Access-Control-Allow-Origin": "*",
             Authorization: `${access_token}`,
           },
         }
