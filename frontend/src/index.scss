@@ -91,6 +91,19 @@ a {
   width: 960px;
   margin: 0 auto;
 }
+
+.PrimaryButton {
+  border: $primary-button-border;
+  border-radius: $button-border-radius;
+  padding: $primary-button-vertical-padding $primary-button-horizontal-padding;
+  background-color: $primary-button-bg;
+}
+
+.SecondaryButton {
+  border: $primary-button-border;
+  border-radius: $button-border-radius;
+  padding: $primary-button-vertical-padding $primary-button-horizontal-padding;
+}
 /* ------------------------------- END RECURENTES -- */
 /* ------------------------------- SIMILAIRES ------ */
 /* ------------------------------- END SIMILAIRES -- */
