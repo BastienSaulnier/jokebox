@@ -10,6 +10,8 @@ import { Provider } from "react-redux";
 
 import Header from "./components/Header/index";
 import Home from "./pages/Home/index";
+import Login from "./pages/Login/index";
+import Signup from "./pages/Signup/index";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -19,6 +21,8 @@ ReactDOM.render(
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
           </Switch>
         </Router>
       </React.StrictMode>
