@@ -1,4 +1,9 @@
 import axios from "axios";
 
-export const testActionAPI = () =>
-  axios.get("http://localhost:5000/test/route");
+export const testActionAPI = () => {
+  if (process.env.NODE_ENV !== "production") {
+    console.log("coucou pas prod");
+  } else {
+    console.log("coucou prod");
+  }
+};
