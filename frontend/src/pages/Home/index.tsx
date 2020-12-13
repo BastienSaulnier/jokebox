@@ -1,23 +1,15 @@
 import * as React from "react";
 import "./index.scss";
-import JokeCard from "../../components/JokeCard";
 
 export interface IHomeProps {}
 
-export interface IHomeState {}
-
-export default class Home extends React.Component<IHomeProps, IHomeState> {
-  constructor(props: IHomeProps) {
-    super(props);
-
-    this.state = {};
-  }
-
-  public render() {
-    return (
-      <div className="Home center">
-        <JokeCard />
-      </div>
-    );
-  }
+export default function Nav(props: IHomeProps) {
+  return (
+    <div className="Home">
+      Home page
+      <button onClick={() => console.log(process.env.NODE_ENV)}>
+        NODE_ENV
+      </button>
+    </div>
+  );
 }
