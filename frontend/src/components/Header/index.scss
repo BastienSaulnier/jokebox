@@ -4,4 +4,9 @@
   border-bottom: solid 4px $hard-main-color;
   padding: 0.6rem;
   box-shadow: $horizontal-box-shadow;
+  .headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
