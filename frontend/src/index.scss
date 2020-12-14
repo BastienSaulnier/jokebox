@@ -97,6 +97,8 @@ a {
   border-radius: $button-border-radius;
   padding: $primary-button-vertical-padding $primary-button-horizontal-padding;
   background-color: $primary-button-bg;
+  color: $light-font-color;
+  font-weight: $bold-font-weight;
 }
 
 .SecondaryButton {

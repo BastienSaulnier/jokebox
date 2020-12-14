@@ -3,6 +3,7 @@ $pale-main-color: #e8ffff;
 $light-main-color: #a6f6f1;
 $hard-main-color: #41aea9;
 $strong-main-color: #213e3b;
+$lightgray: lightgray;
 
 // BOX SHADOWS
 $horizontal-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.14);
@@ -16,18 +17,20 @@ $light-font-color: white;
 $dark-font-color: black;
 $light-main-color-bg: #a6f6f1;
 
+$bold-font-weight: bold;
+
 // BUTTONS
 // // Borders
 $button-border-radius: 0.2rem;
-$primary-button-border: solid 2px $hard-main-color;
-$secondary-button-border: solid 2px $light-main-color;
+$primary-button-border: solid 3px $lightgray;
+$secondary-button-border: solid 3px $lightgray;
 // // Paddings
 $primary-button-vertical-padding: 0.2rem;
 $primary-button-horizontal-padding: 0.6rem;
 $secondary-button-vertical-padding: 0.2rem;
 $secondary-button-horizontal-padding: 0.6rem;
 // // Colors
-$primary-button-bg: #41aea9;
+$primary-button-bg: $lightgray;
 $secondary-button-bg: #41aea9;
 
 // CARDS
