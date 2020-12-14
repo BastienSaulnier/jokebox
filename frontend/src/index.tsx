@@ -12,6 +12,9 @@ import Header from "./components/Header/index";
 import Home from "./pages/Home/index";
 import Login from "./pages/Login/index";
 import Signup from "./pages/Signup/index";
+import Profile from "./pages/Profile/index";
+import ProfileEdit from "./pages/ProfileEdit";
+import ProfileSettings from "./pages/ProfileSettings";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -23,6 +26,9 @@ ReactDOM.render(
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/edit" component={ProfileEdit} />
+            <Route exact path="/profile/settings" component={ProfileSettings} />
           </Switch>
         </Router>
       </React.StrictMode>
