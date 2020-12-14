@@ -40,6 +40,7 @@
     background-color: rgb(252, 252, 252);
     border: solid 1px lightgray;
     box-shadow: -3px 4px 9px 0px rgba(0, 0, 0, 0.1);
+    visibility: hidden;
     &:before {
       content: "";
       display: block;
@@ -114,6 +115,7 @@
 .isOpen {
   opacity: 1 !important;
   transition: all 0.2s;
+  visibility: visible !important;
   &:before {
     opacity: 1 !important;
     top: -0.62rem !important;
