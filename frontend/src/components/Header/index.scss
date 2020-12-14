@@ -1,9 +1,9 @@
 @import "../../vars.scss";
 
 .Header {
-  border-bottom: solid 4px $hard-main-color;
   padding: 0.6rem;
   box-shadow: $horizontal-box-shadow;
+  height: 3.7rem;
   .headerContent {
     display: flex;
     align-items: center;
