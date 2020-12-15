@@ -1,13 +1,15 @@
-import * as React from "react";
+import React from "react";
 import "./index.scss";
 
 import AppLink from "../AppLink/index";
 import UserMonitor from "../UserMonitor/index";
 
-export interface INavProps {}
+export interface INavProps {
+  isLogged?: boolean;
+}
 
 export default function Nav(props: INavProps) {
-  const isLogged = true;
+  const { isLogged } = props;
   return (
     <nav className="Nav">
       {isLogged ? (
@@ -15,7 +17,7 @@ export default function Nav(props: INavProps) {
       ) : (
         <>
           <AppLink
-            linkPath="login"
+            linkPath="/"
             linkLabel="Login"
             linkClassName="PrimaryButton"
           />
