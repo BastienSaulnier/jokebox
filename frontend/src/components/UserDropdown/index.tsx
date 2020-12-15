@@ -1,19 +1,23 @@
 import * as React from "react";
 import "./index.scss";
 
-import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import AppLink from "../AppLink";
+import AppButton from "../AppButton";
+
+import { logout } from "../../redux/actions/login.actions";
 
 export interface IUserDropdownProps {
-  isOpen?: boolean;
   pannelRef?: any;
   burgerRef?: any;
+  logout?: any;
 }
 
 export interface IUserDropdownState {
   pannelRef?: any;
   burgerRef?: any;
+  isOpen?: boolean;
 }
 
 class UserDropdown extends React.Component<
@@ -35,12 +39,11 @@ class UserDropdown extends React.Component<
   }
 
   componentWillUnmount() {
-    document.addEventListener("mousedown", this.handleClick, false);
+    document.removeEventListener("mousedown", this.handleClick, false);
   }
 
   handleClick = (e) => {
     const { isOpen } = this.state;
-    console.log(isOpen);
     if (this.pannelRef.contains(e.target)) {
       this.setState({ isOpen: false });
     } else if (this.burgerRef.contains(e.target) && isOpen === false) {
@@ -58,7 +61,7 @@ class UserDropdown extends React.Component<
 
   public render() {
     const { isOpen } = this.state;
-    /*  const { match, location, history } = this.props; */
+    const { logout } = this.props;
 
     return (
       <div className="UserDropdown">
@@ -112,10 +115,16 @@ class UserDropdown extends React.Component<
             </li>
             <hr />
             <li>
-              <AppLink
+              {/* <AppLink
                 linkPath="/"
                 linkLabel="logout"
                 linkClassName="LogoutButton"
+              /> */}
+              <AppButton
+                buttonClassName="LogoutButton"
+                buttonLabel="Logout"
+                buttonType="button"
+                buttonAction={logout}
               />
             </li>
           </ul>
@@ -125,4 +134,8 @@ class UserDropdown extends React.Component<
   }
 }
 
-export default withRouter(UserDropdown);
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout()),
+});
+
+export default connect(null, mapDispatchToProps)(UserDropdown);

@@ -9,7 +9,7 @@ export interface IUserMonitorProps {}
 export default function UserMonitor(props: IUserMonitorProps) {
   return (
     <div className="UserMonitor">
-      <AppLink linkPath="/profile" linkClassName="ProfileButton">
+      <AppLink linkPath="/home" linkClassName="HomeButton">
         <h5 className="userName">John D.</h5>
         <div className="userPictureContainer">
           <img
