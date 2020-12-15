@@ -4,17 +4,24 @@ import "./index.scss";
 
 import AppLink from "../AppLink/index";
 
-export interface IHeaderProps {}
+export interface IHeaderProps {
+  isLogged?: boolean;
+}
 
 export default function Header(props: IHeaderProps) {
+  const { isLogged } = props;
   return (
     <div className="Header ">
       <div className="headerContent center">
         <h1>
-          <AppLink linkPath="/" linkLabel="Logo" linkClassName="IndexButton" />
+          <AppLink
+            linkPath={isLogged ? "/home" : "/"}
+            linkLabel="Logo"
+            linkClassName="IndexButton"
+          />
         </h1>
         <div className="navContainer">
-          <Nav />
+          <Nav isLogged={isLogged} />
         </div>
       </div>
     </div>

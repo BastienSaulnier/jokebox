@@ -1,12 +1,20 @@
 @import "../../vars.scss";
 
 .Header {
-  padding: 0.6rem;
-  box-shadow: $horizontal-box-shadow;
-  height: 3.7rem;
+  padding: 0.3rem 0.6rem 0;
+  //box-shadow: $horizontal-box-shadow;
+  //background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  z-index: 900;
+  h1 {
+    padding: 0.05rem 1rem;
+    background-color: rgba(255, 255, 255, 0.877);
+    border-radius: 0.3rem;
+  }
   .headerContent {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 3rem;
   }
 }
