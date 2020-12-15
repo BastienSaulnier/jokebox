@@ -3,34 +3,53 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import "./index.scss";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+
 import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
+import axios from "axios";
 
-import Header from "./components/Header/index";
-import Home from "./pages/Home/index";
-import Login from "./pages/Login/index";
-import Signup from "./pages/Signup/index";
-import Profile from "./pages/Profile/index";
-import ProfileEdit from "./pages/ProfileEdit";
-import ProfileSettings from "./pages/ProfileSettings";
+axios.defaults.withCredentials = true;
+// Add a request interceptor
+axios.interceptors.request.use(
+  function (config) {
+    /* const { token } = store.getState().user;
+
+    if (token !== null) {
+      config.headers.common["Authorization"] = `Bearer ${token}`;
+    } else {
+      config.headers.common["Authorization"] = null;
+    } */
+    config.headers.common["Authorization"] = null;
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
+// Catch UNAUTHORIZED response
+axios.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    if (error.response && error.response.status === 401) {
+      /* store.dispatch({
+        type: "UNAUTHORIZED",
+        error: error.response,
+      }); */
+    }
+    return Promise.reject(error);
+  }
+);
 
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <React.StrictMode>
-        <Router>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/profile/edit" component={ProfileEdit} />
-            <Route exact path="/profile/settings" component={ProfileSettings} />
-          </Switch>
-        </Router>
+        <Layout />
       </React.StrictMode>
     </PersistGate>
   </Provider>,
