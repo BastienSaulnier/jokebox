@@ -4,7 +4,7 @@ import "./index.scss";
 export interface IAppButtonProps {
   buttonClassName?: string;
   buttonAction?: any;
-  buttonLabel?: string;
+  buttonLabel?: any;
   buttonType?: any;
 }
 

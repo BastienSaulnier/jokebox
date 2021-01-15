@@ -1,6 +1,15 @@
 @import "../../vars.scss";
 
-video {
-  margin-top: -60px;
-  //transform: rotate(-180deg);
+.Home {
+  .homeContent {
+    display: flex;
+    margin-top: 200px;
+    padding: 1rem;
+    h2 {
+      text-align: center;
+      border-right: solid 1px $lightgray;
+      width: 20%;
+      animation: titleAnimation 0.7s;
+    }
+  }
 }

@@ -1,61 +1,85 @@
-import * as React from "react";
+import React, { useState } from "react";
+import "./index.scss";
 
-import { connect } from "react-redux";
-import {
-  resetInputValue,
-  setInputValue,
-} from "../../redux/actions/inputs.actions";
+import { ErrorMessage, Field } from "formik";
 
 export interface IAppInputProps {
-  inputStoreDispatch?: any;
-  inputSubmitLabel?: string;
   inputPlaceholder?: string;
-  resetInputValue?: any;
-  setInputValue?: any;
-  inputValue?: any;
+  inputInfos?: string;
   inputType?: string;
   inputName?: string;
-  inputId?: string;
+  inputIcon?: any;
+  haveInfos?: boolean;
+  haveIcon?: boolean;
 }
 
-class AppInput extends React.Component<IAppInputProps> {
-  componentWillUnmount = async () => {
-    const { resetInputValue, inputId } = this.props;
-    await resetInputValue(inputId);
-  };
+export default function AppInput(props: IAppInputProps) {
+  const [inputFocus, setInputFocus] = useState(false);
+  const {
+    inputPlaceholder,
+    inputInfos,
+    inputType,
+    inputName,
+    inputIcon,
+    haveInfos,
+    haveIcon,
+  } = props;
 
-  public render() {
-    const {
-      inputSubmitLabel,
-      inputPlaceholder,
-      setInputValue,
-      inputValue,
-      inputType,
-      inputName,
-      inputId,
-    } = this.props;
+  return (
+    <label htmlFor={inputName}>
+      <Field>
+        {({
+          form: { errors, touched, setFieldTouched, handleChange },
+          field: { onBlur },
+          meta,
+        }) => (
+          <>
+            {haveInfos ? (
+              <p className={inputFocus ? "inputInfos" : "inputInfos hidden"}>
+                {inputInfos}
+              </p>
+            ) : null}
 
-    return (
-      <input
-        id={inputId}
-        type={inputType}
-        name={inputName}
-        placeholder={inputPlaceholder}
-        value={inputType === "submit" ? inputSubmitLabel : inputValue.inputId}
-        onChange={(e) => setInputValue(inputId, e.target.value)}
-      />
-    );
-  }
+            {haveIcon ? (
+              <div
+                className={
+                  touched[inputName] && errors[inputName]
+                    ? "inputIcon invalidIcon"
+                    : errors[inputName] === undefined && touched[inputName]
+                    ? "inputIcon validIcon"
+                    : "inputIcon"
+                }
+              >
+                {inputIcon}
+              </div>
+            ) : null}
+
+            <input
+              className={
+                touched[inputName] && errors[inputName]
+                  ? "input invalid"
+                  : touched[inputName] && errors[inputName] === undefined
+                  ? "input valid"
+                  : "input"
+              }
+              name={inputName}
+              type={inputType}
+              placeholder={inputPlaceholder}
+              onFocus={() => setInputFocus(true)}
+              onBlur={(e) => {
+                setInputFocus(false);
+                onBlur(e);
+              }}
+              onChange={(e) => {
+                setFieldTouched([inputName]);
+                handleChange(e);
+              }}
+              autoComplete="off"
+            />
+            <ErrorMessage name={inputName} component="span" />
+          </>
+        )}
+      </Field>
+    </label>
+  );
 }
-
-const mapStateToProps = (state) => ({
-  inputValue: state.inputs,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setInputValue: (inputId, inputValue) =>
-    dispatch(setInputValue(inputId, inputValue)),
-  resetInputValue: (inputId) => dispatch(resetInputValue(inputId)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppInput);

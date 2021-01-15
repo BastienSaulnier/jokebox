@@ -1,1 +1,55 @@
 @import "../../vars.scss";
+
+.Signup {
+  .signupContent {
+    display: flex;
+    margin-top: 200px;
+    padding: 1rem;
+    h2 {
+      text-align: center;
+      border-right: solid 1px $lightgray;
+      width: 20%;
+      animation: titleAnimation 0.7s;
+    }
+    .signupForm {
+      width: 80%;
+      display: flex;
+      justify-content: space-around;
+      margin: 3rem 0;
+      animation: formAnimation 0.2s;
+      form {
+        button {
+          transition: all 0.7s;
+          border-radius: $button-border-radius;
+          padding: 0.5rem 1.3rem;
+          background-color: rgba(161, 161, 161, 0.5);
+          font-weight: $bold-font-weight;
+          color: rgba(0, 0, 0, 0.4);
+          border: none;
+          font-size: 0.9rem;
+          letter-spacing: 2px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes titleAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes formAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(280%);
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}

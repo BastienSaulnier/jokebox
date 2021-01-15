@@ -1,5 +1,13 @@
 @import "../../vars.scss";
 
-.AppLinkIcon {
-  margin-right: 0.5rem;
+.linkIcon {
+  margin-right: 0.8rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  svg {
+    fill: $lightgray;
+  }
 }

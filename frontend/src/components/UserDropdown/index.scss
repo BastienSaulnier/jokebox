@@ -62,10 +62,12 @@
       font-size: 0;
       li {
         a {
-          font-size: 1rem;
+          font-size: 0.8rem;
+          letter-spacing: 1px;
           padding: 1rem;
           width: 100%;
           border-radius: 0;
+
           &:hover {
             background-color: rgb(252, 252, 252);
           }
@@ -77,6 +79,11 @@
           font-weight: bold;
           font-size: 0.9rem;
           padding: 1rem;
+          width: 100%;
+          text-align: left;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
       hr {

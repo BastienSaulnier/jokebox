@@ -1,32 +1,37 @@
 import * as React from "react";
 import "./index.scss";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export interface IAppLinkProps {
+  linkActiveClassName?: string;
   linkClassName?: string;
   linkLabel?: string;
-  withIcon?: boolean;
+  haveIcon?: boolean;
+  linkIcon?: any;
   linkPath?: string;
-  iconUrl?: string;
   children?: any;
 }
 
 export default function AppLink(props: IAppLinkProps) {
   const {
+    linkActiveClassName,
     linkClassName,
     linkLabel,
-    withIcon,
+    haveIcon,
+    linkIcon,
     linkPath,
-    iconUrl,
     children,
   } = props;
   return (
-    <Link to={linkPath} className={linkClassName}>
-      {withIcon ? (
-        <img src={iconUrl} className="AppLinkIcon" alt={`${linkLabel} Icon`} />
-      ) : null}
+    <NavLink
+      exact
+      to={linkPath}
+      className={linkClassName}
+      activeClassName={linkActiveClassName}
+    >
+      {haveIcon ? <div className="linkIcon">{linkIcon}</div> : null}
       {linkLabel || children}
-    </Link>
+    </NavLink>
   );
 }

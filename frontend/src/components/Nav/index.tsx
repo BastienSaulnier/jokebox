@@ -19,12 +19,14 @@ export default function Nav(props: INavProps) {
           <AppLink
             linkPath="/"
             linkLabel="Login"
-            linkClassName="PrimaryButton"
+            linkClassName="LoginButton"
+            linkActiveClassName="ActiveLink"
           />
           <AppLink
             linkPath="signup"
             linkLabel="Sign up"
-            linkClassName="SecondaryButton"
+            linkClassName="SignupButton"
+            linkActiveClassName="ActiveLink"
           />
         </>
       )}

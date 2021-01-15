@@ -6,17 +6,15 @@ import { connect } from "react-redux";
 import AppLink from "../AppLink";
 import AppButton from "../AppButton";
 
+import UserProfileIcon from "../../assets/svg/UserProfileIcon";
+
 import { logout } from "../../redux/actions/login.actions";
 
 export interface IUserDropdownProps {
-  pannelRef?: any;
-  burgerRef?: any;
   logout?: any;
 }
 
 export interface IUserDropdownState {
-  pannelRef?: any;
-  burgerRef?: any;
   isOpen?: boolean;
 }
 
@@ -28,7 +26,6 @@ class UserDropdown extends React.Component<
     super(props);
     this.pannelRef = React.createRef();
     this.burgerRef = React.createRef();
-
     this.state = {
       isOpen: false,
     };
@@ -53,10 +50,6 @@ class UserDropdown extends React.Component<
     } else {
       this.setState({ isOpen: false });
     }
-  };
-
-  toggleDropdown = (isOpen) => {
-    this.setState({ isOpen: isOpen });
   };
 
   public render() {
@@ -88,38 +81,15 @@ class UserDropdown extends React.Component<
               <AppLink
                 linkPath="/profile"
                 linkLabel="User profile"
-                linkClassName="UserProfileButton"
-                withIcon
-                iconUrl="/assets/home_icon.png"
+                linkClassName="UserProfileLink"
+                linkIcon={<UserProfileIcon />}
+                haveIcon
               />
             </li>
 
-            <li>
-              <AppLink
-                linkPath="/profile/edit"
-                linkLabel="Edit profile"
-                linkClassName="EditProfileButton"
-                withIcon
-                iconUrl="/assets/edit_icon.png"
-              />
-            </li>
-
-            <li>
-              <AppLink
-                linkPath="/profile/settings"
-                linkLabel="Settings"
-                linkClassName="UserSettingsButton"
-                withIcon
-                iconUrl="/assets/settings_icon.png"
-              />
-            </li>
             <hr />
+
             <li>
-              {/* <AppLink
-                linkPath="/"
-                linkLabel="logout"
-                linkClassName="LogoutButton"
-              /> */}
               <AppButton
                 buttonClassName="LogoutButton"
                 buttonLabel="Logout"

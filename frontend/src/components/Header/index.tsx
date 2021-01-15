@@ -10,6 +10,7 @@ export interface IHeaderProps {
 
 export default function Header(props: IHeaderProps) {
   const { isLogged } = props;
+
   return (
     <div className="Header ">
       <div className="headerContent center">
@@ -20,9 +21,7 @@ export default function Header(props: IHeaderProps) {
             linkClassName="IndexButton"
           />
         </h1>
-        <div className="navContainer">
-          <Nav isLogged={isLogged} />
-        </div>
+        <Nav isLogged={isLogged} />
       </div>
     </div>
   );

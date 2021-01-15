@@ -1,0 +1,19 @@
+@import "../../vars.scss";
+
+.Profile {
+  .profileContent {
+    display: flex;
+    margin-top: 200px;
+    h2 {
+      text-align: center;
+      border-right: solid 1px $lightgray;
+      width: 20%;
+      animation: titleAnimation 0.7s;
+    }
+    .profileInfos {
+      width: 80%;
+      margin: 0 0 3rem;
+      padding: 0 4.5rem;
+    }
+  }
+}

@@ -1,59 +1,48 @@
-import React from "react";
+import * as React from "react";
 import "./index.scss";
 
-import { connect } from "react-redux";
+import {
+  loginInitialValues,
+  loginSchema,
+} from "../../validations/login.validation";
 import { login } from "../../redux/actions/login.actions";
 
-import AppButton from "../../components/AppButton";
 import AppInput from "../../components/AppInput";
 import AppForm from "../../components/AppForm";
+import UserIcon from "../../assets/svg/UserIcon";
+import UserPasswordIcon from "../../assets/svg/UserPasswordIcon";
 
-export interface ILoginProps {
-  password?: string;
-  email?: string;
-  login?: any;
-}
+export interface ILoginProps {}
 
-class Login extends React.Component<ILoginProps> {
-  public render() {
-    const { password, email, login } = this.props;
-    return (
-      <div className="Login">
-        <h2>Login Page</h2>
-        <AppForm
-          formClassName="LoginForm"
-          formAction={() => login(email, password)}
-        >
-          <AppInput
-            inputId="loginEmailInput"
-            inputType="text"
-            inputName="username"
-            inputPlaceholder="username"
-          />
-          <AppInput
-            inputId="loginPasswordInput"
-            inputType="password"
-            inputName="password"
-            inputPlaceholder="password"
-          />
-          <AppButton
-            buttonClassName="loginSubmitButton"
-            buttonLabel="Login"
-            buttonType="submit"
-          />
-        </AppForm>
+export default function Login(props: ILoginProps) {
+  return (
+    <div className="Login">
+      <div className="loginContent center">
+        <h2>Login</h2>
+        <div className="loginForm">
+          <AppForm
+            formValidationSchema={loginSchema}
+            formInitialValues={loginInitialValues}
+            formButtonLabel={"Login"}
+            formAction={login}
+          >
+            <AppInput
+              inputType="text"
+              inputName="email"
+              inputPlaceholder="User email"
+              inputIcon={<UserIcon />}
+              haveIcon
+            />
+            <AppInput
+              inputType="password"
+              inputName="password"
+              inputPlaceholder="User password"
+              inputIcon={<UserPasswordIcon />}
+              haveIcon
+            />
+          </AppForm>
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-const mapStateToProps = (state) => ({
-  email: state.inputs.loginEmailInput,
-  password: state.inputs.loginPasswordInput,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  login: (email, password) => dispatch(login(email, password)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);

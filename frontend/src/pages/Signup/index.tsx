@@ -4,55 +4,59 @@ import "./index.scss";
 import AppForm from "../../components/AppForm";
 import AppInput from "../../components/AppInput";
 
+import {
+  signUpInitialValues,
+  signUpSchema,
+} from "../../validations/signup.validation";
+import { signUp } from "../../redux/actions/signup.actions";
+
 export interface ISignupProps {}
 
 export default function Signup(props: ISignupProps) {
   return (
     <div className="Signup">
-      <h2>Signup page</h2>
-      <AppForm formClassName="LoginForm" formSubmitAction={""}>
-        <AppInput
-          inputId="signupLastnameInput"
-          inputType="text"
-          inputName="lastname"
-          inputPlaceholder="lastname"
-        />
-        <AppInput
-          inputId="signupFirstnameInput"
-          inputType="text"
-          inputName="firstname"
-          inputPlaceholder="firstname"
-        />
-        <AppInput
-          inputId="signupUsernameInput"
-          inputType="text"
-          inputName="username"
-          inputPlaceholder="username"
-        />
-        <AppInput
-          inputId="signupEmailInput"
-          inputType="email"
-          inputName="email"
-          inputPlaceholder="email address"
-        />
-        <AppInput
-          inputId="signupPasswordInput"
-          inputType="password"
-          inputName="password"
-          inputPlaceholder="password"
-        />
-        <AppInput
-          inputId="signupRePasswordInput"
-          inputType="password"
-          inputName="re-password"
-          inputPlaceholder="retype password"
-        />
-        <AppInput
-          inputType="submit"
-          inputName="submit"
-          inputSubmitLabel="signup"
-        />
-      </AppForm>
+      <div className="signupContent center">
+        <h2>Sign up</h2>
+        <div className="signupForm">
+          <AppForm
+            formValidationSchema={signUpSchema}
+            formInitialValues={signUpInitialValues}
+            formButtonLabel="Sign up"
+            formAction={signUp}
+          >
+            <AppInput
+              inputType="text"
+              inputName="firstname"
+              inputPlaceholder="Firstname"
+            />
+            <AppInput
+              inputType="text"
+              inputName="lastname"
+              inputPlaceholder="Lastname"
+            />
+            <AppInput
+              inputType="text"
+              inputName="username"
+              inputPlaceholder="Username"
+            />
+            <AppInput
+              inputType="email"
+              inputName="email"
+              inputPlaceholder="Email address"
+            />
+            <AppInput
+              inputType="password"
+              inputName="password"
+              inputPlaceholder="Password"
+            />
+            <AppInput
+              inputType="password"
+              inputName="passwordCheck"
+              inputPlaceholder="Retype password"
+            />
+          </AppForm>
+        </div>
+      </div>
     </div>
   );
 }
