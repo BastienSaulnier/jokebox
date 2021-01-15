@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import "./index.scss";
 
-import Layout from "./components/Layout";
+import AppRouterLayout from "./components/AppRouterLayout";
 
 import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
@@ -14,21 +14,19 @@ axios.defaults.withCredentials = true;
 // Add a request interceptor
 axios.interceptors.request.use(
   function (config) {
-    /* const { token } = store.getState().user;
+    const { token } = store.getState().login;
 
     if (token !== null) {
       config.headers.common["Authorization"] = `Bearer ${token}`;
     } else {
       config.headers.common["Authorization"] = null;
-    } */
-    config.headers.common["Authorization"] = null;
+    }
     return config;
   },
   function (error) {
     return Promise.reject(error);
   }
 );
-
 // Catch UNAUTHORIZED response
 axios.interceptors.response.use(
   function (response) {
@@ -36,24 +34,24 @@ axios.interceptors.response.use(
   },
   function (error) {
     if (error.response && error.response.status === 401) {
-      /* store.dispatch({
+      store.dispatch({
         type: "UNAUTHORIZED",
         error: error.response,
-      }); */
+      });
     }
     return Promise.reject(error);
   }
 );
 
+const { isLogged } = store.getState().login;
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <React.StrictMode>
-        <Layout />
+        <AppRouterLayout isLogged={isLogged} />
       </React.StrictMode>
     </PersistGate>
   </Provider>,
-
   document.getElementById("root")
 );
 

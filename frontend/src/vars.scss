@@ -3,10 +3,11 @@ $pale-main-color: #e8ffff;
 $light-main-color: #a6f6f1;
 $hard-main-color: #41aea9;
 $strong-main-color: #213e3b;
-$lightgray: lightgray;
+$lightgray: #d3d3d3;
 
 // BOX SHADOWS
 $horizontal-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.14);
+$button-box-shadow: 1px 0px 2px 2px rgba(0, 0, 0, 0.1);
 
 // BACKGROUNDS
 $light-bg: white;
@@ -17,6 +18,8 @@ $light-font-color: white;
 $dark-font-color: black;
 $light-main-color-bg: #a6f6f1;
 
+$bold-font-size: 1.3rem;
+
 $bold-font-weight: bold;
 
 // BUTTONS
@@ -25,13 +28,13 @@ $button-border-radius: 0.2rem;
 $primary-button-border: solid 3px $lightgray;
 $secondary-button-border: solid 3px $lightgray;
 // // Paddings
-$primary-button-vertical-padding: 0.2rem;
-$primary-button-horizontal-padding: 0.6rem;
-$secondary-button-vertical-padding: 0.2rem;
-$secondary-button-horizontal-padding: 0.6rem;
 // // Colors
-$primary-button-bg: $lightgray;
+$primary-button-bg: $light-bg;
 $secondary-button-bg: #41aea9;
 
 // CARDS
 $card-border-radius: 0.3rem;
+
+// Feedbacks
+$success-color: #7bd369;
+$error-color: #e74c3c;

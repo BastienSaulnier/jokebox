@@ -92,28 +92,64 @@ a {
   margin: 0 auto;
 }
 
-.PrimaryButton {
-  border: $primary-button-border;
-  border-radius: $button-border-radius;
-  padding: $primary-button-vertical-padding $primary-button-horizontal-padding;
-  background-color: $primary-button-bg;
-  color: $light-font-color;
-  font-weight: $bold-font-weight;
+/* .AppToast {
+  top: 2.5rem !important;
+  .Toastify__toast {
+    min-height: 0;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.8rem;
+    box-shadow: $horizontal-box-shadow;
+    .Toastify__toast-body {
+      font-size: 0.9rem;
+    }
+  }
+  .AppSuccessToast {
+    background-color: $success-color;
+  }
+  .AppErrorToast {
+    background-color: $error-color;
+  }
+} */
+
+.ActiveLink {
+  background-color: $primary-button-bg !important;
+  padding: 0.5rem 1.3rem !important;
+  box-shadow: $horizontal-box-shadow;
+  transform: scale(1.5) !important;
+  color: black !important;
 }
 
-.SecondaryButton {
-  border: $primary-button-border;
-  border-radius: $button-border-radius;
-  padding: $primary-button-vertical-padding $primary-button-horizontal-padding;
+.ActiveButton {
+  background-color: rgb(123, 211, 105) !important;
+  color: white !important;
 }
+
+.InactiveButton {
+  transition: all 0.7s;
+  border-radius: $button-border-radius;
+  padding: 0.5rem 1.3rem;
+  background-color: rgba(161, 161, 161, 0.5);
+  font-weight: $bold-font-weight;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  pointer-events: none;
+}
+
 /* ------------------------------- END RECURENTES -- */
 /* ------------------------------- SIMILAIRES ------ */
 /* ------------------------------- END SIMILAIRES -- */
 /* ------------------------ MEDIA QUERIES 960px ---- */
 
-@media screen and (max-width: 1280) {
+/* @media screen and (max-width: 1280) {
   .center {
-    width: 100%;
-    margin: 0;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+} */
+
+@media (max-width: 1250px) {
+  .center {
+    width: 100% !important;
   }
 }
