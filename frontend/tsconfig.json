@@ -17,6 +17,17 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["./src/**/*.ts"],
+  "include": [
+    "./src/**/*.ts",
+    "src/redux/reducers/index.js",
+    "src/redux/consts/user.consts.js",
+    "src/redux/consts/signup.consts.js",
+    "src/redux/consts/login.consts.js",
+    "src/redux/consts/inputs.consts.js",
+    "src/redux/actions/user.actions.js",
+    "src/redux/actions/signup.actions.js",
+    "src/redux/actions/login.actions.js",
+    "src/redux/actions/inputs.actions.js"
+  ],
   "types": "node"
 }
