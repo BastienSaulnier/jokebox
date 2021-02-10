@@ -1,5 +1,23 @@
 @import "../../vars.scss";
 
+#avatarUploadInputLabel {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.7rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: rgba(238, 237, 237, 0.589);
+  border-radius: 0.7rem;
+  box-shadow: 1px 0px 2px 1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0;
+  input {
+    opacity: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-bottom: 0;
+  }
+}
+
 label {
   position: relative;
   display: block;
@@ -11,6 +29,7 @@ label {
   input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
   }
+
   .input {
     position: relative;
     transition: all 0.5s;

@@ -9,6 +9,7 @@ export interface IAppInputProps {
   inputType?: string;
   inputName?: string;
   inputIcon?: any;
+  labelId?: string;
   haveInfos?: boolean;
   haveIcon?: boolean;
 }
@@ -21,12 +22,13 @@ export default function AppInput(props: IAppInputProps) {
     inputType,
     inputName,
     inputIcon,
+    labelId,
     haveInfos,
     haveIcon,
   } = props;
 
   return (
-    <label htmlFor={inputName}>
+    <label id={labelId} htmlFor={inputName}>
       <Field>
         {({
           form: { errors, touched, setFieldTouched, handleChange },

@@ -1,9 +1,8 @@
 import * as React from "react";
 import "./index.scss";
 
-import UserFileIcon from "../../assets/svg/UserFileIcon";
-
 import AppButton from "../AppButton/index";
+import UserFileIcon from "../../assets/svg/UserFileIcon";
 
 export interface IUserProfileProps {
   firstname?: string;
@@ -14,14 +13,7 @@ export interface IUserProfileProps {
 }
 
 export default function UserProfile(props: IUserProfileProps) {
-  const {
-    firstname,
-    lastname,
-    username,
-    email,
-
-    avatar_url,
-  } = props;
+  const { firstname, lastname, username, email, avatar_url } = props;
 
   return (
     <div className="UserProfile">
@@ -30,8 +22,9 @@ export default function UserProfile(props: IUserProfileProps) {
           buttonClassName="uploadAvatarButton"
           buttonLabel={<UserFileIcon />}
           buttonType="button"
-          buttonAction={console.log("click !")}
+          buttonAction={() => console.log("click !")}
         />
+
         <img src={avatar_url || "/assets/avatar.png"} alt="User Avatar" />
       </div>
 

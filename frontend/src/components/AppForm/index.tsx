@@ -8,20 +8,13 @@ import Loader from "react-loader-spinner";
 
 import AppButton from "../AppButton/index";
 
-export interface IAppFormProps {
-  formValidationSchema?: any;
-  formInitialValues?: any;
-  formButtonLabel?: string;
-  formAction?: any;
-  children?: any;
-}
-
 export interface FormikContextProps {
   formAction?: any;
+  formInitialValues?: any;
 }
 
 function FormikContext(props: FormikContextProps) {
-  const { formAction } = props;
+  const { formAction, formInitialValues } = props;
   const dispatch = useDispatch();
   const {
     setSubmitting,
@@ -29,6 +22,7 @@ function FormikContext(props: FormikContextProps) {
     setErrors,
     isValid,
     values,
+    setValues,
   } = useFormikContext();
 
   useEffect(() => {
@@ -38,11 +32,13 @@ function FormikContext(props: FormikContextProps) {
           .then((res) => {
             const { error } = res.action.payload.data;
             setSubmitting(false);
-            if (error !== null) {
+            if (error.api) {
+              // NEED TO WRITE API ERRORS HANDLE LOGIC
+            } else if (error !== null) {
               setErrors(error);
             }
           })
-          .catch(async () => {
+          .catch(() => {
             setSubmitting(false);
           });
       }
@@ -55,8 +51,19 @@ function FormikContext(props: FormikContextProps) {
     dispatch,
     isValid,
     values,
+    setValues,
+    formInitialValues,
   ]);
   return null;
+}
+
+export interface IAppFormProps {
+  formValidationSchema?: any;
+  formInitialValues?: any;
+  formButtonLabel?: string;
+  formAction?: any;
+  haveButton?: boolean;
+  children?: any;
 }
 
 export default function AppForm(props: IAppFormProps) {
@@ -78,7 +85,10 @@ export default function AppForm(props: IAppFormProps) {
     >
       {({ dirty, isValid, isSubmitting }) => (
         <>
-          <FormikContext formAction={formAction} />
+          <FormikContext
+            formAction={formAction}
+            formInitialValues={formInitialValues}
+          />
           <Form>
             {children}
             <AppButton
@@ -88,12 +98,7 @@ export default function AppForm(props: IAppFormProps) {
               }
               buttonLabel={
                 isSubmitting ? (
-                  <Loader
-                    type="ThreeDots"
-                    color="white"
-                    height={6}
-                    width={40}
-                  />
+                  <Loader type="ThreeDots" height={6} width={40} />
                 ) : (
                   formButtonLabel
                 )
