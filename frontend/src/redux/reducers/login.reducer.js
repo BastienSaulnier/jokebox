@@ -4,6 +4,7 @@ const initState = {
   isLogged: false,
   token: null,
   error: null,
+  success: false,
 };
 
 const login = (state = initState, action) => {
@@ -14,6 +15,7 @@ const login = (state = initState, action) => {
         isLogged: action.payload.data.isLogged,
         token: action.payload.data.token,
         error: action.payload.data.error,
+        success: action.payload.data.success,
       };
 
     case loginConsts.LOGOUT:
@@ -22,6 +24,7 @@ const login = (state = initState, action) => {
         isLogged: false,
         token: null,
         error: null,
+        success: false,
       };
 
     default:
